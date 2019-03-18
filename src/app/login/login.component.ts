@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginRequest } from '../services/view-model.model';
-import { ApiService } from '../services/api-service.service';
+import { ApiService } from '../shared';
+import { LoginRequest } from '../shared/models/service.model';
+import { alertType, Alert } from '../shared/models/alerts.model';
 
 @Component({
     selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
       private service: ApiService
 
     ) {}
+    alerts: Array<Alert> = [];
     formGroup: FormGroup;
 
     ngOnInit() {
@@ -27,12 +29,17 @@ export class LoginComponent implements OnInit {
         });
     }
 
+    public onAlertClose(alert: any) {
+      console.log(alert);
+  }
     onLoggedin() {
         if (this.formGroup.valid) {
             const request: LoginRequest = Object.assign({}, this.formGroup.value);
             this.service.token(request).subscribe(data => {
               if (data.body.isSucess) {
-                this.router.navigate(['/dashboard']);
+                this.router.navigate(['/dashboard']).then(e => {console.log(e); });
+              } else {
+                this.alerts.push({ message: data.body.message, type: alertType.danger });
               }
             });
         }

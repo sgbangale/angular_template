@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { AlertService } from 'src/app/shared';
+import { Alert } from 'src/app/shared/models/alerts.model';
 
 @Component({
     selector: 'app-header',
@@ -10,8 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class HeaderComponent implements OnInit {
     public pushRightClass: string;
 
-    constructor(private translate: TranslateService, public router: Router) {
-
+    constructor(private translate: TranslateService, public router: Router, private alertService: AlertService  ) {
         this.router.events.subscribe(val => {
             if (
                 val instanceof NavigationEnd &&

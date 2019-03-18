@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Alert } from '../../../../shared/models/alerts.model';
 
 @Component({
     selector: 'app-alert',
@@ -6,31 +7,15 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./alert.component.scss']
 })
 export class AlertComponent implements OnInit {
-    alerts: Array<any> = [];
-    constructor() {
-        this.alerts.push({
-            id: 1,
-            type: 'success',
-            message: 'This is an success alert',
-        }, {
-            id: 2,
-            type: 'info',
-            message: 'This is an info alert',
-        }, {
-            id: 3,
-            type: 'warning',
-            message: 'This is a warning alert',
-        }, {
-            id: 4,
-            type: 'danger',
-            message: 'This is a danger alert',
-        });
-    }
+  @Input() alerts: Array<Alert> = [];
+  @Output() close: EventEmitter<Alert> = new EventEmitter<Alert>();
+    constructor() {}
 
     ngOnInit() { }
 
-    public closeAlert(alert: any) {
+    public closeAlert(alert: Alert) {
         const index: number = this.alerts.indexOf(alert);
         this.alerts.splice(index, 1);
+        this.close.emit(alert);
     }
 }
