@@ -7,6 +7,9 @@
             <li class="breadcrumb-item">
                 <i class="fa fa-dashboard"></i> <a href="Javascript:void(0)" [routerLink]="['/dashboard']">Dashboard</a>
             </li>
+            <li *ngFor="let item of inActiveBreadCrumb" class="breadcrumb-item">
+                    <i class="fa {{item.icon}}"></i> <a href="Javascript:void(0)" [routerLink]="[item.link]">{{item.link_name}}</a>
+                </li>
             <li class="breadcrumb-item active"><i class="fa {{icon}}"></i> {{heading}}</li>
         </ol>
     </div>

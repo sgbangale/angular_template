@@ -11,9 +11,12 @@ export class StatComponent implements OnInit {
     @Input() count: number;
     @Input() label: string;
     @Input() data: number;
-    @Output() event: EventEmitter<any> = new EventEmitter();
+    @Output() viewDetails: EventEmitter<any> = new EventEmitter();
 
     constructor() {}
+    details() {
+        this.viewDetails.emit();
+    }
 
     ngOnInit() {}
 }

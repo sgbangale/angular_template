@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Alert, alertType } from 'src/app/shared/models/alerts.model';
-import { AlertService } from 'src/app/shared';
+import { Alert } from 'src/app/shared/models/alerts.model';
+import { AlertService} from 'src/app/shared';
 
 @Component({
   selector: 'app-entity-dashboard',
@@ -9,20 +9,13 @@ import { AlertService } from 'src/app/shared';
 })
 export class EntityDashboardComponent implements OnInit {
   alerts: Array<Alert> = [];
-
-
   constructor(private alertService: AlertService) {
     this.alertService.getAlerts.subscribe(data => {
       if (data) {
-          this.alerts.push(data);
+        this.alerts.push(data);
       }
     });
-   }
-
-  ngOnInit() {
-    this.alertService.showAlert({ message: 'data.body.message', type: alertType.danger });
-
   }
 
-
+  ngOnInit() {}
 }

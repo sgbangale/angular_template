@@ -1,0 +1,15 @@
+<app-page-header [heading]="'Super Admin'" [icon]="'fa-wrench'"></app-page-header>
+<div class="row">
+    <div class="col-xl-3 col-lg-6">
+        <app-stat [bgClass]="'success'" [icon]="'fa-puzzle-piece'" [count]="entityActiveCount" [label]="'Entities'" (viewDetails)="onViewDetails('entity')" ></app-stat>
+    </div>
+    <div class="col-xl-3 col-lg-6">
+        <app-stat [bgClass]="'success'" [icon]="'fa-tasks'" [count]="entityAccessActiveCount" [label]="'Entity Access'" ></app-stat>
+    </div>
+    <div class="col-xl-3 col-lg-6">
+        <app-stat [bgClass]="'success'" [icon]="'fa-cubes'" [count]="124" [label]="'New Orders!'" ></app-stat>
+    </div>
+    <div class="col-xl-3 col-lg-6">
+        <app-stat [bgClass]="'success'" [icon]="'fa-support'" [count]="13" [label]="'New Tickets!'"></app-stat>
+    </div>
+</div>

@@ -17,6 +17,7 @@ export class AlertService {
   }
 
   showAlert(alert: Alert): void {
+    this.alerts = new BehaviorSubject(null);
     this.alerts.next(alert);
   }
 
