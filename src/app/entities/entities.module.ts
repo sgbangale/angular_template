@@ -1,16 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BsComponentModule } from '../shared/bs-component/bs-component.module';
 import { EntitiesRoutingModule } from './entities-routing.module';
-import { EntityDashboardComponent } from './entity-dashboard/entity-dashboard.component';
-import { BsComponentModule } from '../layout/bs-component/bs-component.module';
-import { PageHeaderModule, StatModule } from '../shared';
-import { EntityListComponent } from './entity-list/entity-list.component';
-import { EntityMenuComponent } from './entity-menu/entity-menu.component';
-import { NgbModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { EntityDetailsComponent } from './entity-details/entity-details.component';
 import { EntityAccessListComponent } from './entity-access-list/entity-access-list.component';
 import { EntityCreateComponent } from './entity-create/entity-create.component';
+import { EntityDashboardComponent } from './entity-dashboard/entity-dashboard.component';
+import { EntityDetailsComponent } from './entity-details/entity-details.component';
+import { EntityListComponent } from './entity-list/entity-list.component';
+import { EntityMenuComponent } from './entity-menu/entity-menu.component';
 
 
 
@@ -23,10 +22,7 @@ import { EntityCreateComponent } from './entity-create/entity-create.component';
     ReactiveFormsModule,
     EntitiesRoutingModule,
     BsComponentModule,
-    PageHeaderModule,
-    StatModule,
-    NgbModule,
-    NgbTypeaheadModule
+    NgbModule
   ]
 })
 export class EntitiesModule { }

@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { PageHeader } from '../../models/page-header.model';
+import { PageHeader } from 'src/app/shared/models/page-header.model';
 
 @Component({
     selector: 'app-page-header',
