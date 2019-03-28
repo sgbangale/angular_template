@@ -1,0 +1,112 @@
+<app-page-header [heading]="this.formGroup.controls['entity_code'].value" [icon]="'fa-puzzle-piece'" [inActiveBreadCrumb]="[
+{icon:'fa-wrench',link:'/settings/',link_name:'Super Admin' },
+{icon:'fa-puzzle-piece',link:'/settings/entities',link_name:'Entities' }]"></app-page-header>
+
+
+<form role="form" [formGroup]="formGroup" (ngSubmit)="saveEntity()">
+  <ngb-tabset>
+    <ngb-tab title="General">
+      <ng-template ngbTabContent>
+
+
+        <div class="form-group">
+          <label class="form-control-label" for="entity_code">Entity code</label>
+          <input type="text" class="form-control" [ngClass]="{ 'is-invalid':hasError(f['entity_code'])}" formControlName="entity_code" id="entity_code">
+          <div *ngIf="hasError(f['entity_code'])" class="invalid-feedback">
+              <div *ngIf="f['entity_code'].errors.required">Entity Code is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="entity_name">Entity Name</label>
+          <input type="text" [ngClass]="{ 'is-invalid':hasError(f['entity_name'])}" class="form-control" formControlName="entity_name" id="entity_name">
+          <div *ngIf="hasError(f['entity_name'])" class="invalid-feedback">
+              <div *ngIf="f['entity_name'].errors.required">Entity Name is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Entity Active</label>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" formControlName="entity_active"> Active
+            </label>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Columns">
+      <ng-template ngbTabContent>
+
+          <div class="row">
+              <div class="col-xl-12">                  
+                  <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                          <button (click)="addColumn()" class="float-center card-inverse">
+                              <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            </button>
+                      </li>
+                  </ol>
+              </div>
+          </div>
+          
+
+
+        <div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Column Code</th>
+                <th scope="col">Column Type</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody formArrayName="entity_schema" *ngFor="let field of this.formGroup.controls['entity_schema'].controls; let i=index">
+              <tr [formGroupName]="i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>
+                  <input type="text" [ngClass]="{ 'is-invalid':hasError(field.controls['column_name'])}" class="form-control"  formControlName="column_name" id="column_name">
+                  <div *ngIf="hasError(field.controls['column_name'])" class="invalid-feedback">                      
+                      <div *ngIf="field.hasError('required', 'column_name')">Column Name is required</div>
+                  </div>
+                </td>
+                <td>
+                  <select class="form-control" [ngClass]="{ 'is-invalid':hasError(field.controls['column_type'])}" formControlName="column_type">
+                    <option *ngFor="let option of this.columnTypes; let i=index" value="{{option}}">{{option}}</option>
+                  </select>
+                  <div *ngIf="hasError(field.controls['column_type'])" class="invalid-feedback">
+                      <div *ngIf="field.hasError('required', 'column_type')">Column Type is required</div>
+                  </div>
+                </td>
+                <td>
+                  <button (click)="removeColumn(i)" [disabled]="f['entity_schema'].controls.length == 1" class="float-left card-inverse">
+                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </ng-template>
+    </ngb-tab>
+
+  </ngb-tabset>
+
+  <div class="row">
+      <div class="col-xl-12">                  
+          <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                  <button [disabled]="!formGroup.valid" class="btn btn-primary float-right">
+                      <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    </button>
+              </li>
+          </ol>
+      </div>
+  </div>
+
+
+
+
+  {{this.formGroup.value | json}}
+</form>

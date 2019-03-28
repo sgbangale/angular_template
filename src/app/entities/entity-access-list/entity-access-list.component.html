@@ -1,16 +1,4 @@
-<app-page-header [heading]="'Entities'" [icon]="'fa-puzzle-piece'" [inActiveBreadCrumb]="[{icon:'fa-wrench',link:'/settings',link_name:'Super Admin' }]"></app-page-header>
-<div class="row">
-    <div class="col-xl-12">                  
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <button (click)="addEntity()" class="float-right card-inverse">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                  </button>
-            </li>
-        </ol>
-    </div>
-</div>
-
+<app-page-header [heading]="'Access'" [icon]="'fa-tasks'" [inActiveBreadCrumb]="[{icon:'fa-wrench',link:'/settings',link_name:'Super Admin' }]"></app-page-header>
 <form>
     <div class="form-group form-inline">
         Full text search: <input class="form-control ml-2"  [formControl]="filter" type="text" />
@@ -35,6 +23,11 @@
       <td>
         <button (click)="details(entity['_id'])" class="float-right card-inverse">
             <i class="fa fa-arrow-circle-right"></i>
+        </button>
+      </td>
+      <td>
+        <button class="float-right card-inverse"> 
+            <i class="fa fa-info" aria-hidden="true"></i>
         </button>
       </td>
     </tr>

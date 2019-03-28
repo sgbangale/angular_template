@@ -41,7 +41,7 @@ export class ApiService {
     );
   }
 
-  view(access: string, requestData: any): Observable<any> {
+  request(access: string, requestData: any): Observable<any> {
     const req = new HttpRequest<any>('POST', `${environment.rootUrl}request?request_type=${access}`, requestData, this.httpOptions);
     return this.http.request<Token>(req).pipe(
       filter(data => data instanceof HttpResponse), // filter out the unknown response.

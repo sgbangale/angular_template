@@ -1,20 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, QueryList } from '@angular/core';
 import { ApiService } from 'src/app/shared';
 import { activeEntities } from 'src/app/shared/requests/entity.request';
+import { Observable, Subscription, observable, of } from 'rxjs';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-entity-list',
   templateUrl: './entity-list.component.html',
   styleUrls: ['./entity-list.component.scss']
 })
-export class EntityListComponent implements OnInit {
+export class EntityListComponent implements OnInit, OnDestroy {
+  constructor(private service: ApiService, private router: Router) {}
 
-  constructor(private service: ApiService) { }
-
-  ngOnInit() {
-this.service.view('entity__view', activeEntities).subscribe(data => {
-  console.log(data.value);
-});
+  entityData: Array<any> = [];
+  observableData: Observable<any>;
+  totalcount: Observable<number>;
+  filter = new FormControl('');
+  addEntity() {
+    this.router.navigate([`/settings/entities/create`]);
   }
+  ngOnDestroy(): void {
+  }
+columns(data: any): Array<any> {
+  return Object.keys(data);
+}
+  ngOnInit() {
+       this.service.request('entity__view', activeEntities).subscribe(data => {
+        this.observableData = of(data.value.body.data);
+        this.totalcount = of(data.value.body.count);
+     });
+  }
+details(id: string) {
+  this.router.navigate([`/settings/entities/details/${id}`]);
+}
 
 }

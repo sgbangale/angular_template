@@ -13,12 +13,12 @@ export class EntityMenuComponent implements OnInit {
   entityAccessActiveCount: number;
 
   constructor(private service: ApiService, private router: Router) {
-    this.service.view('entity__view',
+    this.service.request('entity__view',
     entityActiveCount
     ).subscribe(data => {
       this.entityActiveCount = data.value.body.count;
     });
-    this.service.view('entityaccess__view',
+    this.service.request('entityaccess__view',
     activeEntityAccessCount
     ).subscribe(data => {
       this.entityAccessActiveCount = data.value.body.count;
@@ -27,7 +27,16 @@ export class EntityMenuComponent implements OnInit {
    }
 
    onViewDetails(data: any) {
-     this.router.navigate(['/settings/entities']);
+     switch (data) {
+       case 'entity':
+       this.router.navigate(['/settings/entities']);
+       break;
+       case 'entityAccess':
+       this.router.navigate(['/settings/accesses']);
+       break;
+
+     }
+
    }
 
   ngOnInit() {
