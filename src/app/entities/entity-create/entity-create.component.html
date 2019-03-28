@@ -3,7 +3,7 @@
 {icon:'fa-puzzle-piece',link:'/settings/entities',link_name:'Entities' }]"></app-page-header>
 
 
-<form role="form" [formGroup]="formGroup" (ngSubmit)="saveEntity()">
+<form class="form-horizontal" role="form" [formGroup]="formGroup" (ngSubmit)="saveEntity()" novalidate>
   <ngb-tabset>
     <ngb-tab title="General">
       <ng-template ngbTabContent>
