@@ -9,8 +9,7 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-            { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
-            { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule' },
+            // { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'settings', loadChildren: '../entities/entities.module#EntitiesModule' }
         ]
     }
