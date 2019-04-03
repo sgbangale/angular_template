@@ -1,6 +1,6 @@
 export const entityActiveCount = {
   request_data: {
-    filters: { entity_active: true },
+    filters: { },
     sortFields: 'entity_code',
     removeColumns: '-entity_code -entity_name -__v -_id -entity_access -entity_schema -entity_active',
     first: 0,
@@ -10,7 +10,7 @@ export const entityActiveCount = {
 
 export const activeEntityAccessCount = {
   request_data: {
-    filters: { entity_access_active: true },
+    filters: {   },
     sortFields: 'entity_code',
     removeColumns: '-entity_access_js -__v -_id -entity_code -entity_access_code -entity_access_active',
     first: 0,
@@ -21,7 +21,7 @@ export const activeEntityAccessCount = {
 
 export const activeEntities = {
   request_data: {
-    filters: { entity_active: true },
+    filters: {  },
     sortFields: 'entity_code',
     removeColumns: '',
     first: 0,
@@ -31,7 +31,7 @@ export const activeEntities = {
 
 export const activeEntitiyDetails = {
   request_data: {
-    filters: { entity_active: true, _id: '' },
+    filters: {  },
     sortFields: 'entity_code',
     removeColumns: '',
     first: 0,
@@ -57,4 +57,14 @@ export const entityCreate = {
     'entity_schema': {
     }
   }
+  };
+
+  export const entityList = {
+    request_data: {
+      filters: { },
+      sortFields: 'entity_code',
+      removeColumns: ' -entity_build -entity_name -__v -_id -entity_access -entity_active',
+      first: 0,
+      rows: 0
+    }
   };

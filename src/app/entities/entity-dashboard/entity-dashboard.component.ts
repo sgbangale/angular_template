@@ -8,14 +8,11 @@ import { AlertService} from 'src/app/shared';
   styleUrls: ['./entity-dashboard.component.scss']
 })
 export class EntityDashboardComponent implements OnInit {
-  alerts: Array<Alert> = [];
+  alerts: Alert = null;
   constructor(private alertService: AlertService) {
-    this.alertService.getAlerts.subscribe(data => {
-      if (data) {
-        this.alerts.push(data);
-      }
-    });
+
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+}
 }

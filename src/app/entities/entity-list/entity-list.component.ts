@@ -32,7 +32,7 @@ columns(data: any): Array<any> {
      });
   }
 details(id: string) {
-  this.router.navigate([`/settings/entities/details/${id}`]);
+  this.router.navigate([`/settings/entities/create/${id}`]);
 }
 
 }

@@ -11,8 +11,15 @@ import { Alert } from 'src/app/shared/models/alerts.model';
 })
 export class HeaderComponent implements OnInit {
     public pushRightClass: string;
-
+    alerts: Alert = null;
     constructor(private translate: TranslateService, public router: Router, private alertService: AlertService  ) {
+
+this.alertService.getAlerts.subscribe(data => {
+    if (data) {
+      this.alerts = data;
+    }
+  });
+
         this.router.events.subscribe(val => {
             if (
                 val instanceof NavigationEnd &&

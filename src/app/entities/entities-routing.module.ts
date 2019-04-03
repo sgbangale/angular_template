@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { EntityDashboardComponent } from './entity-dashboard/entity-dashboard.component';
 import { EntityMenuComponent } from './entity-menu/entity-menu.component';
 import { EntityListComponent } from './entity-list/entity-list.component';
-import { EntityDetailsComponent } from './entity-details/entity-details.component';
 import { EntityAccessListComponent } from './entity-access-list/entity-access-list.component';
 import { EntityCreateComponent } from './entity-create/entity-create.component';
+import { EntityAccessCreateComponent } from './entity-access-create/entity-access-create.component';
 
 
 const routes: Routes = [
@@ -22,8 +22,8 @@ const routes: Routes = [
                 component: EntityListComponent
             },
             {
-                path: 'entities/details/:id',
-                component: EntityDetailsComponent
+                path: 'entities/create/:id',
+                component: EntityCreateComponent
 
             },
             {
@@ -35,7 +35,17 @@ const routes: Routes = [
                 path: 'accesses',
                 component: EntityAccessListComponent
 
-            }
+            },
+            {
+                path: 'accesses/create/:id',
+                component: EntityAccessCreateComponent
+
+            },
+            {
+                path: 'accesses/create',
+                component: EntityAccessCreateComponent
+
+            },
         ]
     },
 

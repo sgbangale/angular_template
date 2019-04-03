@@ -52,4 +52,16 @@ export class ApiService {
       })
     );
   }
+
+  list(access: string, requestData: any): Observable<any> {
+    const req = new HttpRequest<any>('POST', `${environment.rootUrl}request?request_type=${access}`, requestData, this.httpOptions);
+    return this.http.request<Token>(req).pipe(
+      filter(data => data instanceof HttpResponse), // filter out the unknown response.
+      map(data => {
+        console.log(data);
+        const resp = data as HttpResponse<any>;
+            return of(resp.body.body.data);
+      })
+    );
+  }
 }

@@ -1,0 +1,77 @@
+<app-page-header [heading]="this.formGroup.controls['entity_access_code'].value" [icon]="'fa fa-tasks'"
+  [inActiveBreadCrumb]="[
+{icon:'fa-wrench',link:'/settings/',link_name:'Super Admin' },
+{icon:'fa fa-tasks',link:'/settings/accesses',link_name:'Access' }]"></app-page-header>
+
+<div>
+
+  <form class="form-horizontal" role="form" [formGroup]="formGroup" (ngSubmit)="saveEntity()" novalidate>
+    <ngb-tabset>
+      <ngb-tab title="General">
+        <ng-template ngbTabContent>
+          <div class="form-group">
+            <label class="form-control-label" for="entity_code">Entity Code</label>
+            <select class="form-control" [ngClass]="{ 'is-invalid':hasError(f['entity_code'])}"
+              formControlName="entity_code">
+              <option *ngFor="let option of this.entity_codes; let i=index" value="{{option.entity_code}}">
+                {{option.entity_code}}
+              </option>
+            </select>
+            <div *ngIf="hasError(f['entity_code'])" class="invalid-feedback">
+              <div *ngIf="f['entity_code'].errors.required">Entity Code is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="entity_access_code">Entity Access Code</label>
+            <input type="text" class="form-control" [ngClass]="{ 'is-invalid':hasError(f['entity_access_code'])}"
+              formControlName="entity_access_code" id="entity_access_code">
+            <div *ngIf="hasError(f['entity_access_code'])" class="invalid-feedback">
+              <div *ngIf="f['entity_access_code'].errors.required">Access Code is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Entity Access</label>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" formControlName="entity_access_active"> Active
+              </label>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Schema Access">
+        <ng-template ngbTabContent>
+            <div class="form-group">
+            <select class="custom-select" multiple formControlName="entity_schema_access">
+                <option *ngFor="let option of this.entity_schema; let i=index" value="{{option}}">
+                    {{option}}
+                  </option>
+              </select>
+              <div *ngIf="hasError(f['entity_schema_access'])" class="invalid-feedback">
+                  <div *ngIf="f['entity_schema_access'].errors.required">Schema Details are required</div>
+                </div>
+              </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Server Side Handler">
+          <ng-template ngbTabContent>
+              <div class="form-group">
+           
+                </div>
+          </ng-template>
+        </ngb-tab>
+    </ngb-tabset>
+    <div class="row">
+      <div class="col-xl-12">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <button [disabled]="!formGroup.valid" class="btn btn-primary float-right">
+              <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            </button>
+          </li>
+        </ol>
+      </div>
+    </div>
+    {{this.formGroup.getRawValue() | json}}
+  </form>
+</div>

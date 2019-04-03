@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EntityDetailsComponent } from './entity-details.component';
+import { EntityAccessCreateComponent } from './entity-access-create.component';
 
-describe('EntityDetailsComponent', () => {
-  let component: EntityDetailsComponent;
-  let fixture: ComponentFixture<EntityDetailsComponent>;
+describe('EntityAccessCreateComponent', () => {
+  let component: EntityAccessCreateComponent;
+  let fixture: ComponentFixture<EntityAccessCreateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EntityDetailsComponent ]
+      declarations: [ EntityAccessCreateComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EntityDetailsComponent);
+    fixture = TestBed.createComponent(EntityAccessCreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

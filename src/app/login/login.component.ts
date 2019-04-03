@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
       private service: ApiService
 
     ) {}
-    alerts: Array<Alert> = [];
+    alerts: Alert = null;
     formGroup: FormGroup;
 
     ngOnInit() {
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
               if (data.body.isSucess) {
                 this.router.navigate(['/dashboard']).then(e => {console.log(e); });
               } else {
-                this.alerts.push({ message: data.body.message, type: alertType.danger });
+                this.alerts = { message: data.body.message, type: alertType.danger };
               }
             });
         }

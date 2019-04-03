@@ -1,7 +1,7 @@
 <div class="login-page">
   <div class="row justify-content-md-center">
     <div class="col-md-4">
-        <app-alert [alerts]="alerts" (close)="onAlertClose($event)"></app-alert>
+        <app-alert [alert]="alerts" (close)="onAlertClose($event)"></app-alert>
       <img src="assets/images/logo.png" width="150px" class="user-avatar" />
       <h1>Login</h1>
       <form [formGroup]="formGroup" role="form" (ngSubmit)="onLoggedin()">

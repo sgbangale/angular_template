@@ -30,7 +30,9 @@ columns(data: any): Array<any> {
      });
   }
 details(id: string) {
-  this.router.navigate([`/settings/entities/details/${id}`]);
+  this.router.navigate([`/settings/accesses/details/${id}`]);
 }
-
+addEntityAccess() {
+  this.router.navigate([`/settings/accesses/create`]);
+}
 }

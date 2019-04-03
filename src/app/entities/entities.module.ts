@@ -7,15 +7,15 @@ import { EntitiesRoutingModule } from './entities-routing.module';
 import { EntityAccessListComponent } from './entity-access-list/entity-access-list.component';
 import { EntityCreateComponent } from './entity-create/entity-create.component';
 import { EntityDashboardComponent } from './entity-dashboard/entity-dashboard.component';
-import { EntityDetailsComponent } from './entity-details/entity-details.component';
 import { EntityListComponent } from './entity-list/entity-list.component';
 import { EntityMenuComponent } from './entity-menu/entity-menu.component';
+import { EntityAccessCreateComponent } from './entity-access-create/entity-access-create.component';
 
 
 
 @NgModule({
   declarations: [EntityDashboardComponent, EntityListComponent,
-    EntityMenuComponent, EntityDetailsComponent, EntityAccessListComponent, EntityCreateComponent],
+    EntityMenuComponent, EntityAccessListComponent, EntityCreateComponent, EntityAccessCreateComponent],
   imports: [
     CommonModule,
     FormsModule,
