@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { entityAccess } from 'src/app/shared/requests/entity.request';
+import * as _ from 'lodash';
 
 
 @Component({
@@ -20,9 +21,9 @@ export class EntityAccessListComponent implements OnInit {
   totalcount: Observable<number>;
   filter = new FormControl('');
 
-columns(data: any): Array<any> {
-  return Object.keys(data);
-}
+  columns(data: any): Array<any> {
+    return _.find(this.service.getSessionValues('admin_enities'), x => x.entity_code === 'entityaccess').entity_schema_access;
+  }
   ngOnInit() {
        this.service.request('entityaccess__view', entityAccess).subscribe(data => {
         this.observableData = of(data.value.body.data);
@@ -30,7 +31,7 @@ columns(data: any): Array<any> {
      });
   }
 details(id: string) {
-  this.router.navigate([`/settings/accesses/details/${id}`]);
+  this.router.navigate([`/settings/accesses/create/${id}`]);
 }
 addEntityAccess() {
   this.router.navigate([`/settings/accesses/create`]);

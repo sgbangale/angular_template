@@ -3,6 +3,19 @@
 {icon:'fa-wrench',link:'/settings/',link_name:'Super Admin' },
 {icon:'fa fa-tasks',link:'/settings/accesses',link_name:'Access' }]"></app-page-header>
 
+
+<div class="row">
+  <div class="col-xl-12">
+    <ol class="breadcrumb">
+      <li>
+        <button [disabled]="!f['_id'].value" (click)="entityAccess_build()" class="btn btn-primary float-right">
+          <i class="fa fa-cog" aria-hidden="true"></i> Publish Access
+        </button>
+      </li>
+    </ol>
+  </div>
+</div>
+
 <div>
 
   <form class="form-horizontal" role="form" [formGroup]="formGroup" (ngSubmit)="saveEntity()" novalidate>
@@ -56,7 +69,7 @@
       <ngb-tab title="Server Side Handler">
           <ng-template ngbTabContent>
               <div class="form-group">
-           
+                  <app-code-editor [content]="jsContent" (contentChanged)="codeChanged($event)" ></app-code-editor>
                 </div>
           </ng-template>
         </ngb-tab>

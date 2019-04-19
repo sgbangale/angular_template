@@ -10,6 +10,7 @@ import { EntityDashboardComponent } from './entity-dashboard/entity-dashboard.co
 import { EntityListComponent } from './entity-list/entity-list.component';
 import { EntityMenuComponent } from './entity-menu/entity-menu.component';
 import { EntityAccessCreateComponent } from './entity-access-create/entity-access-create.component';
+import { CodeEditorModule } from '../code-editor/code-editor.module';
 
 
 
@@ -22,7 +23,8 @@ import { EntityAccessCreateComponent } from './entity-access-create/entity-acces
     ReactiveFormsModule,
     EntitiesRoutingModule,
     BsComponentModule,
-    NgbModule
+    NgbModule,
+    CodeEditorModule
   ]
 })
 export class EntitiesModule { }

@@ -12,17 +12,17 @@ export class EntityMenuComponent implements OnInit {
   entityActiveCount: number;
   entityAccessActiveCount: number;
 
-  constructor(private service: ApiService, private router: Router) {
-    this.service.request('entity__view',
-    entityActiveCount
-    ).subscribe(data => {
-      this.entityActiveCount = data.value.body.count;
-    });
-    this.service.request('entityaccess__view',
-    activeEntityAccessCount
-    ).subscribe(data => {
-      this.entityAccessActiveCount = data.value.body.count;
-    });
+  constructor(public service: ApiService, private router: Router) {
+    // this.service.request('entity__view',
+    // entityActiveCount
+    // ).subscribe(data => {
+    //   this.entityActiveCount = data.value.body.count;
+    // });
+    // this.service.request('entityaccess__view',
+    // activeEntityAccessCount
+    // ).subscribe(data => {
+    //   this.entityAccessActiveCount = data.value.body.count;
+    // });
 
    }
 
@@ -31,7 +31,7 @@ export class EntityMenuComponent implements OnInit {
        case 'entity':
        this.router.navigate(['/settings/entities']);
        break;
-       case 'entityAccess':
+       case 'entityaccess':
        this.router.navigate(['/settings/accesses']);
        break;
 

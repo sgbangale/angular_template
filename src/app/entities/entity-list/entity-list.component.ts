@@ -4,6 +4,7 @@ import { activeEntities } from 'src/app/shared/requests/entity.request';
 import { Observable, Subscription, observable, of } from 'rxjs';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-entity-list',
@@ -23,7 +24,7 @@ export class EntityListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
   }
 columns(data: any): Array<any> {
-  return Object.keys(data);
+  return _.find(this.service.getSessionValues('admin_enities'), x => x.entity_code === 'entity').entity_schema_access;
 }
   ngOnInit() {
        this.service.request('entity__view', activeEntities).subscribe(data => {

@@ -1,9 +1,30 @@
 <app-page-header [heading]="'Super Admin'" [icon]="'fa-wrench'"></app-page-header>
 <div class="row">
-    <div class="col-xl-3 col-lg-6">
-        <app-stat [bgClass]="'success'" [icon]="'fa-puzzle-piece'" [count]="entityActiveCount" [label]="'Entities'" (viewDetails)="onViewDetails('entity')" ></app-stat>
+    <div *ngFor="let item of this.service.getSessionValues('admin_enities')" class="col-xl-3 col-lg-6">
+
+            <div class="card text-white bg-success">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col col-xs-3">
+                                <i class="fa fa-puzzle-piece fa-5x"></i>
+                            </div>
+                            <div class="col col-xs-9 text-right">
+                                <!-- <div class="d-block huge">{{count}}</div> -->
+                                <div class="d-block">{{item.label}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="float-left">View Details</span>
+                        <button (click)="onViewDetails(item.entity_code)" class="float-right card-inverse">
+                            <i class="fa fa-arrow-circle-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+        <!-- <app-stat [bgClass]="'success'" [icon]="'fa-puzzle-piece'" [count]="entityActiveCount" [label]="'Entities'" (viewDetails)="onViewDetails(item.entity_code)" ></app-stat> -->
     </div>
-    <div class="col-xl-3 col-lg-6">
+    <!-- <div class="col-xl-3 col-lg-6">
         <app-stat [bgClass]="'success'" [icon]="'fa-tasks'" [count]="entityAccessActiveCount" [label]="'Entity Access'" (viewDetails)="onViewDetails('entityAccess')"></app-stat>
     </div>
     <div class="col-xl-3 col-lg-6">
@@ -11,5 +32,5 @@
     </div>
     <div class="col-xl-3 col-lg-6">
         <app-stat [bgClass]="'success'" [icon]="'fa-support'" [count]="13" [label]="'New Tickets!'"></app-stat>
-    </div>
+    </div> -->
 </div>

@@ -20,10 +20,8 @@
 <table class="table table-striped">
     <thead>
     <tr>
-      <!-- <th scope="col">#</th>
-      <th scope="col">Country</th>
-      <th scope="col">Area</th>
-      <th scope="col">Population</th> -->
+      <th scope="col">#</th>
+      <th *ngFor="let item of this.columns('test')"  scope="col">{{item}}</th>
     </tr>
     </thead>
     <tbody>

@@ -10,7 +10,8 @@ const routes: Routes = [
             { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             // { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
-            { path: 'settings', loadChildren: '../entities/entities.module#EntitiesModule' }
+            { path: 'settings', loadChildren: '../entities/entities.module#EntitiesModule' },
+            { path: 'operations', loadChildren: '../operations/operations.module#OperationsModule' }
         ]
     }
 ];

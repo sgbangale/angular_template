@@ -21,6 +21,7 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { DataTableComponent } from './components/data-table/data-table.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { TranslateModule } from '@ngx-translate/core';
         PageHeaderComponent,
         HeaderComponent,
         SidebarComponent,
+        DataTableComponent
     ],
     imports: [
         CommonModule,
@@ -69,6 +71,7 @@ import { TranslateModule } from '@ngx-translate/core';
         PageHeaderComponent,
         HeaderComponent,
         SidebarComponent,
+        DataTableComponent
     ]
 })
 export class BsComponentModule {}

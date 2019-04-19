@@ -3,6 +3,18 @@
 {icon:'fa-wrench',link:'/settings/',link_name:'Super Admin' },
 {icon:'fa-puzzle-piece',link:'/settings/entities',link_name:'Entities' }]"></app-page-header>
 
+<div class="row">
+  <div class="col-xl-12">
+    <ol class="breadcrumb">
+      <li>
+        <button [disabled]="!f['_id'].value" (click)="entity_build()" class="btn btn-primary float-right">
+          <i class="fa fa-cog" aria-hidden="true"></i> Build
+        </button>
+      </li>
+    </ol>
+  </div>
+</div>
+
 <div>
   <form class="form-horizontal" role="form" [formGroup]="formGroup" (ngSubmit)="saveEntity()" novalidate>
     <ngb-tabset>
@@ -98,16 +110,11 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
             <button [disabled]="!formGroup.valid" class="btn btn-primary float-right">
-              <i class="fa fa-floppy-o" aria-hidden="true"></i>
+              <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
             </button>
-          </li>
+          </li>          
         </ol>
       </div>
     </div>
-
-
-
-
-    {{this.formGroup.value | json}}
   </form>
 </div>

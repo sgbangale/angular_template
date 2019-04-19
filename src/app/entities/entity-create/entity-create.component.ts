@@ -3,7 +3,7 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AlertService, ApiService } from 'src/app/shared';
-import { entityCreate, activeEntitiyDetails } from 'src/app/shared/requests/entity.request';
+import { entityCreate, activeEntitiyDetails, entityBuild } from 'src/app/shared/requests/entity.request';
 
 @Component({
   selector: 'app-entity-create',
@@ -40,7 +40,14 @@ export class EntityCreateComponent implements OnInit {
   hasError(control: AbstractControl) {
     return (control.dirty || control.touched) && control.errors;
   }
-
+  entity_build() {
+    entityBuild.request_data.entityId = this.f['_id'].value;
+    this.service.request('entity__build', entityBuild).subscribe(data => {
+      if (data.value.isSucess) {
+        this.router.navigate(['/settings/entities']);
+      }
+    });
+  }
   saveEntity() {
     if (this.formGroup.valid) {
       entityCreate.request_data = this.formGroup.value;

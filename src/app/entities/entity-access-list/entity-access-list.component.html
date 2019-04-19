@@ -16,32 +16,26 @@
         Full text search: <input class="form-control ml-2"  [formControl]="filter" type="text" />
     </div>
 </form>
-
+<div class="table-responsive">
 <table class="table table-striped">
     <thead>
     <tr>
-      <!-- <th scope="col">#</th>
-      <th scope="col">Country</th>
-      <th scope="col">Area</th>
-      <th scope="col">Population</th> -->
+      <th scope="col">#</th>
+      <th scope="col">Actions</th>
+      <th *ngFor="let item of this.columns('test')"  scope="col">{{item}}</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let entity of observableData | async; index as i">
       <th scope="row">{{ i + 1 }}</th>
-      <td *ngFor="let key of columns(entity)">
+      <td>
+          <button (click)="details(entity['_id'])" class="float-right card-inverse">
+              <i class="fa fa-arrow-circle-right"></i>
+          </button>
+        </td> 
+      <td *ngFor="let key of this.columns('test')">
         <ngb-highlight [result]="entity[key]" [term]="filter.value"></ngb-highlight>
-      </td>
-      <td>
-        <button (click)="details(entity['_id'])" class="float-right card-inverse">
-            <i class="fa fa-arrow-circle-right"></i>
-        </button>
-      </td>
-      <td>
-        <button class="float-right card-inverse"> 
-            <i class="fa fa-info" aria-hidden="true"></i>
-        </button>
       </td>
     </tr>
     </tbody>
-  </table>
+  </table></div>

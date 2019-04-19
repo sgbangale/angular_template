@@ -39,6 +39,17 @@ export const activeEntitiyDetails = {
   }
 };
 
+
+export const entityAccessDetails = {
+  'request_data'	: {
+  'filters': {},
+  'sortFields': 'entity_code',
+  'removeColumns': '',
+  'first': 0,
+  'rows': 0
+  }
+  };
+
 export const entityAccess = {
   'request_data'	: {
   'filters': {},
@@ -68,3 +79,13 @@ export const entityCreate = {
       rows: 0
     }
   };
+export const entityBuild = {
+  'request_data' : {
+    'entityId': ''
+  }
+  };
+  export const entityAccessBuild = {
+    'request_data' : {
+      'entityAccessId': ''
+    }
+    };
