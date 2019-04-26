@@ -11,6 +11,8 @@ import { EntityListComponent } from './entity-list/entity-list.component';
 import { EntityMenuComponent } from './entity-menu/entity-menu.component';
 import { EntityAccessCreateComponent } from './entity-access-create/entity-access-create.component';
 import { CodeEditorModule } from '../code-editor/code-editor.module';
+import { OperationsModule } from '../operations/operations.module';
+import { UserRolesModule } from '../user-roles/user-roles.module';
 
 
 
@@ -24,7 +26,9 @@ import { CodeEditorModule } from '../code-editor/code-editor.module';
     EntitiesRoutingModule,
     BsComponentModule,
     NgbModule,
-    CodeEditorModule
+    CodeEditorModule,
+    OperationsModule,
+    UserRolesModule
   ]
 })
 export class EntitiesModule { }

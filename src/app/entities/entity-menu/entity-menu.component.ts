@@ -34,7 +34,12 @@ export class EntityMenuComponent implements OnInit {
        case 'entityaccess':
        this.router.navigate(['/settings/accesses']);
        break;
-
+       case 'role':
+       this.router.navigate(['/settings/roles']);
+       break;
+       case 'user':
+       this.router.navigate(['/settings/users']);
+       break;
      }
 
    }

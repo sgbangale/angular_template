@@ -1,2 +1,2 @@
 <app-page-header [heading]="this.service.getEntityLabel(this.entity_code)" [icon]="'fa-puzzle-piece'" [inActiveBreadCrumb]="[{icon:'fa-bar-chart-o',link:'/operations',link_name:'Operations' }]"></app-page-header>
-<app-data-table [entity_code]="this.entity_code" ></app-data-table>
+<app-data-table [entity_code]="this.entity_code" [filters]="this.tableFilter" ></app-data-table>

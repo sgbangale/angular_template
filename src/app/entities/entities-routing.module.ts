@@ -6,6 +6,8 @@ import { EntityListComponent } from './entity-list/entity-list.component';
 import { EntityAccessListComponent } from './entity-access-list/entity-access-list.component';
 import { EntityCreateComponent } from './entity-create/entity-create.component';
 import { EntityAccessCreateComponent } from './entity-access-create/entity-access-create.component';
+import { RoleListComponent } from '../user-roles/role-list/role-list.component';
+import { UserListComponent } from '../user-roles/user-list/user-list.component';
 
 
 const routes: Routes = [
@@ -44,6 +46,16 @@ const routes: Routes = [
             {
                 path: 'accesses/create',
                 component: EntityAccessCreateComponent
+
+            },
+            {
+                path: 'roles',
+                component: RoleListComponent
+
+            },
+            {
+                path: 'users',
+                component: UserListComponent
 
             },
         ]

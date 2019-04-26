@@ -1,39 +1,36 @@
-import { Component, OnInit, OnDestroy, QueryList } from '@angular/core';
-import { ApiService } from 'src/app/shared';
-import { activeEntities } from 'src/app/shared/requests/entity.request';
-import { Observable, Subscription, observable, of } from 'rxjs';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ApiService } from 'src/app/shared';
 
 @Component({
   selector: 'app-entity-list',
   templateUrl: './entity-list.component.html',
   styleUrls: ['./entity-list.component.scss']
 })
-export class EntityListComponent implements OnInit, OnDestroy {
-  constructor(private service: ApiService, private router: Router) {}
+export class EntityListComponent implements  OnDestroy {
 
-  entityData: Array<any> = [];
-  observableData: Observable<any>;
-  totalcount: Observable<number>;
-  filter = new FormControl('');
+  public tableFilter: any = {
+    request_data: {
+      filters: {}, // this.filters,
+      sortFields: '',
+      removeColumns: '',
+      first: 0,
+      rows: 0
+    }
+  };
+
+  constructor(public router: Router) {}
+
   addEntity() {
     this.router.navigate([`/settings/entities/create`]);
   }
   ngOnDestroy(): void {
   }
-columns(data: any): Array<any> {
-  return _.find(this.service.getSessionValues('admin_enities'), x => x.entity_code === 'entity').entity_schema_access;
-}
-  ngOnInit() {
-       this.service.request('entity__view', activeEntities).subscribe(data => {
-        this.observableData = of(data.value.body.data);
-        this.totalcount = of(data.value.body.count);
-     });
-  }
-details(id: string) {
-  this.router.navigate([`/settings/entities/create/${id}`]);
+
+  details(id: string) {
+    // this.router.navigate(['/settings/entities/create/${$event}'])
+ this.router.navigate([`/settings/entities/create/${id}`]);
 }
 
 }

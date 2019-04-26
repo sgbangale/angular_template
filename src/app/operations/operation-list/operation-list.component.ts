@@ -10,7 +10,16 @@ import * as _ from 'lodash';
 })
 export class OperationListComponent implements OnInit {
   entity_code: String;
-  constructor(private service: ApiService, private route: ActivatedRoute) {}
+  public tableFilter = {
+    'request_data'	: {
+    'filters': {},
+    'sortFields': '',
+    'removeColumns': '',
+    'first': 0,
+    'rows': 0
+    }
+    };
+  constructor(public service: ApiService, private route: ActivatedRoute) {}
   ngOnInit() {
     this.route.params.subscribe(value => {
       if (value.id) {

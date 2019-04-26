@@ -1,27 +1,27 @@
 <form>
-    <div class="form-group form-inline">
-        Full text search: <input class="form-control ml-2"  [formControl]="filter" type="text" />
-    </div>
+  <div class="form-group form-inline">Full text search: <input class="form-control ml-2" [formControl]="filter" type="text" /></div>
 </form>
-
-<table class="table table-striped">
+<div class="table-responsive">
+  <table class="table table-striped">
     <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th *ngFor="let item of service.getColumns(this.entity_code)"  scope="col">{{item}}</th>
-    </tr>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="row">Actions</th>
+        <th *ngFor="let item of service.getColumns(this.entity_code,this.isAdmin)" scope="col">{{ item }}</th>
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let obj of observableData | async; index as i">
-      <th scope="row">{{ i + 1 }}</th>
-      <td *ngFor="let key of service.getColumns(this.entity_code)">
-        <ngb-highlight [result]="obj[key]" [term]="filter.value"></ngb-highlight>
-      </td>
-      <td>
-        <button class="float-right card-inverse">
+      <tr *ngFor="let obj of (observableData | async); index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          <button (click)="this.action(obj['_id'])" class="float-right card-inverse">
             <i class="fa fa-arrow-circle-right"></i>
-        </button>
-      </td>
-    </tr>
+          </button>
+        </td>
+        <td *ngFor="let key of service.getColumns(this.entity_code,this.isAdmin)">
+          <ngb-highlight [result]="obj[key]" [term]="filter.value"></ngb-highlight>
+        </td>
+      </tr>
     </tbody>
   </table>
+</div>
